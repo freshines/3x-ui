@@ -5,7 +5,7 @@ ARG TARGETARCH
 RUN apk --no-cache --update add build-base gcc wget unzip
 COPY . .
 RUN env CGO_ENABLED=1 go build -o build/x-ui main.go
-RUN ./DockerInit.sh "$TARGETARCH"
+RUN arch=`arch` &&  platform=`[ $arch = "aarch64" ] && echo "arm64" || echo "amd64"` && ./DockerInit.sh $platform
 
 
 #Build app image using latest x-ui
