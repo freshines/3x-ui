@@ -1,4 +1,6 @@
 #!/bin/sh
+echo 'DockerInit.sh'
+echo $1
 if [ $1 == "amd64" ]; then
     ARCH="64";
     FNAME="amd64";
